@@ -124,7 +124,7 @@ void client()
 	}
 }
 
-void main()
+int main()
 {
 	std::string choice;
 	std::cout << "(S)erver or (C)lient?\n";
@@ -137,4 +137,5 @@ void main()
 	{
 		client();
 	}
+	return 0;
 }
