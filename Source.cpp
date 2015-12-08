@@ -5,8 +5,11 @@
 const unsigned short PORT = 15000;
 const std::string IPADDRESS("76.167.95.53");//change to suit your needs
 
+<<<<<<< HEAD
 using namespace std;
 
+=======
+>>>>>>> 7c6d49038ffcc316f8e984d96cda43062109d272
 void server()
 {
 	sf::Packet packet;
@@ -126,7 +129,11 @@ void client()
 	}
 }
 
+<<<<<<< HEAD
 int main()
+=======
+void main()
+>>>>>>> 7c6d49038ffcc316f8e984d96cda43062109d272
 {
 	std::string choice;
 	std::cout << "(S)erver or (C)lient?\n";
@@ -139,5 +146,8 @@ int main()
 	{
 		client();
 	}
+<<<<<<< HEAD
     return 0;
+=======
+>>>>>>> 7c6d49038ffcc316f8e984d96cda43062109d272
 }
