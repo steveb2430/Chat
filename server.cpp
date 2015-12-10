@@ -3,7 +3,7 @@
 #include <SFML/Network.hpp>
 
 const unsigned short PORT = 15000;
-const std::string IPADDRESS("76.167.95.53");//change to suit your needs
+const std::string IPADDRESS("127.0.0.1");//change to suit your needs
 
 void server()
 {
@@ -83,59 +83,8 @@ void server()
 	}
 }
 
-void client()
-{
-	sf::TcpSocket socket;
-	sf::Packet packet;
-	sf::Uint8 header;
-	std::string msg;
-	std::string name;
-	sf::Uint64 pos = 0;
-
-	std::getline(std::cin, name); //Hackish way to fix an error. Error: First cin/getline() is skipped.
-	std::cout << "Name?\n";
-	std::getline(std::cin, name);
-
-	if (socket.connect(IPADDRESS, PORT) == sf::Socket::Done)
-	{
-		while (true)
-		{
-			header = 1;
-			packet << header;
-			packet << name;
-			socket.send(packet);
-			packet.clear();
-
-			header = 2;
-			packet << header;
-			std::getline(std::cin, msg);
-			packet << msg;
-			socket.send(packet);
-			packet.clear();
-
-			header = 3;
-			packet << header;
-			std::cout << "Sending current position\n";
-			pos++; //Pretend this is getPOS();
-			packet << pos;
-			socket.send(packet);
-			packet.clear();
-		}
-	}
-}
-
 int main()
 {
-	std::string choice;
-	std::cout << "(S)erver or (C)lient?\n";
-	std::cin >> choice;
-	if (choice == "s")
-	{
-		server();
-	}
-	else if (choice == "c")
-	{
-		client();
-	}
+	server();
 	return 0;
 }
